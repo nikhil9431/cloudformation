@@ -1,0 +1,46 @@
+{
+	"Parameters" : {
+		"Amiid": {
+		 "Description": "Please enter the proper AMI id",
+		 "Type": "String",
+		 "ConstraintDescription": "must be a valid AMI"
+		},
+		
+		"instancetype": {
+		 "Description": "Please enter the proper instance type",
+		 "Type": "String",
+		 "ConstraintDescription": "must be a valid instance type"
+		},
+		
+		"keyname": {
+		 "Description": "Please enter the proper key name value",
+		 "Type": "String",
+		 "ConstraintDescription": "must be a valid key name"
+		},
+		"securitygroup": {
+			"Description": "Please enter the proper security group id",
+			"Type": "String",
+			"ConstraintDescription": "must be a valid security group id"
+		   },
+		   "subnetid": {
+			"Description": "Please enter the proper subnet id value",
+			"Type": "String",
+			"ConstraintDescription": "must be a valid subnet id"
+		   }
+	   },
+	"Resources": {
+		"Ec2instancetest":
+
+
+		{
+			"Type": "AWS::EC2::Instance",
+			"Properties": {
+				"ImageId": {"Ref":"Amiid"},
+				"InstanceType": {"Ref":"instancetype"},
+				"KeyName": {"Ref":"keyname"},
+				"SecurityGroupIds": [{"Ref":"securitygroup"}],
+				"SubnetId": {"Ref":"subnetid"}
+			}
+		}
+	}
+}

@@ -1,0 +1,70 @@
+{
+	"Parameters": {
+		"vpccider": {
+			"Description": "Please enter the proper vpc cider value",
+			"Type": "String",
+			"ConstraintDescription": "must be a valid cider value"
+		},
+
+		"subnet01cider": {
+			"Description": "Please enter the proper subnet value",
+			"Type": "String",
+			"ConstraintDescription": "must be a valid subnet cider value"
+		},
+
+		"subnet02cider": {
+			"Description": "Please enter the proper subnet value",
+			"Type": "String",
+			"ConstraintDescription": "must be a valid subnet cider value"
+		}
+	},
+
+	"Resources": {
+		"Ec2vpctest":{
+			"Type": "AWS::EC2::VPC",
+			"Properties": {
+				"CidrBlock": {
+					"Ref": "vpccider"
+				},
+				"Tags": [{
+					"Key": "Name",
+					"Value": "vpccloudformation"
+				}]
+			}
+		},
+
+	"Ec2subnet01test": {
+		"Type": "AWS::EC2::Subnet",
+		"Properties": {
+			"VpcId": {
+				"Ref": "Ec2vpctest"
+			},
+			"CidrBlock": {
+				"Ref": "subnet01cider"
+			},
+			"AvailabilityZone": "us-east-1a",
+			"Tags": [{
+				"Key": "Name",
+				"Value": "subnet01test"
+			}]
+		}
+	},
+	"Ec2subnet02test": {
+		"Type": "AWS::EC2::Subnet",
+		"Properties": {
+			"VpcId": {
+				"Ref": "Ec2vpctest"
+			},
+			"CidrBlock": {
+				"Ref": "subnet02cider"
+			},
+			"AvailabilityZone": "us-east-1a",
+			"Tags": [{
+				"Key": "Name",
+				"Value": "subnet02test"
+			}]
+		}
+	}
+}
+}
+
